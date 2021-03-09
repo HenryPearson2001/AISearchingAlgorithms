@@ -10,7 +10,7 @@ public class BestFirstFrontier implements Frontier {
     private NodeFunction function;
 
     public BestFirstFrontier(NodeFunction function) {
-        this.function = function
+        this.function = function;
     }
 
     public void addNode(Node node) {
@@ -19,7 +19,7 @@ public class BestFirstFrontier implements Frontier {
             maxStored = frontier.size();
         }
         // set the nodes value
-        node.value = this.function(node)
+        node.value = this.function(node);
         this.frontier.add(node);
     }
 
@@ -48,3 +48,4 @@ public class BestFirstFrontier implements Frontier {
         this.totalNodes = 0;
         this.maxStored = 0;
     }
+}

@@ -5,13 +5,15 @@ public class Node {
 	public final Action action;
 	public final State state;
 	public final int depth;
-	public final int value;
+	public int value;
+	public final int pathCost;
 	
-	public Node(Node parent, Action action, State state, int depth) {
+	public Node(Node parent, Action action, State state, int depth, int pathCost) {
 		this.parent = parent;
 		this.action = action;
 		this.state = state;
 		this.depth = depth;
 		this.value = 0;
+		this.pathCost = pathCost;
 	}
 }
