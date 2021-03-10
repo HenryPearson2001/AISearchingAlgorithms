@@ -7,10 +7,10 @@ public class BestFirstFrontier implements Frontier {
     private PriorityQueue<Node> frontier = new PriorityQueue<Node>(new NodeComparator());
     private int totalNodes = 0;
     private int maxStored = 0;
-    private NodeFunction function;
+    private NodeFunction costFunction;
 
-    public BestFirstFrontier(NodeFunction function) {
-        this.function = function;
+    public BestFirstFrontier(NodeFunction costFunction) {
+        this.costFunction = costFunction;
     }
 
     public void addNode(Node node) {
@@ -19,7 +19,7 @@ public class BestFirstFrontier implements Frontier {
             maxStored = frontier.size();
         }
         // set the nodes value
-        node.value = this.function(node);
+        node.value = this.costFunction.function(node);
         this.frontier.add(node);
     }
 

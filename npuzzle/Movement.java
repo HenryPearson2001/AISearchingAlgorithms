@@ -14,6 +14,6 @@ public enum Movement implements Action {
 	}
 
 	public int cost() {
-	    return 1
+	    return 1;
 	}
 }

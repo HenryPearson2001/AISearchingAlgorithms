@@ -8,6 +8,9 @@ import search.BreadthFirstFrontier;
 import search.Frontier;
 import search.GoalTest;
 import search.Node;
+import search.NodeFunction;
+import search.AStarFunction;
+import search.BestFirstFrontier;
 
 public class demos {
 	public static void main(String[] args) {
@@ -48,6 +51,7 @@ public class demos {
 		depthFirstFrontier.resetCounts();
 		*/
 
+        /*
 		System.out.println("Breadth first tree search:");
 		System.out.println();
 		Node solution2 = breadthFirstTreeSearch.solve(initialConfiguration, goalTest);
@@ -81,6 +85,35 @@ public class demos {
 		new NPuzzlePrinting().printSolution(solution5);
 		iterativeDeepeningTreeSearch.outputStats();
 		iterativeDeepeningTreeSearch.resetCounts();
+		System.out.println();
+        */
+
+		// tests for lab 2
+		NodeFunction heuristicFunction = new MisplacedTilesHeuristicFunction();
+		NodeFunction costFunction = new AStarFunction(heuristicFunction);
+		Frontier AStarFrontier = new BestFirstFrontier(costFunction);
+
+		TreeSearch AStarTreeSearch = new TreeSearch(AStarFrontier);
+		GraphSearch AStarGraphSearch = new GraphSearch(AStarFrontier);
+
+
+		System.out.println("A* tree search:");
+		System.out.println();
+		Node solution6 = AStarTreeSearch.solve(initialConfiguration, goalTest);
+		new NPuzzlePrinting().printSolution(solution6);
+		System.out.println("Number of nodes in search: " + AStarFrontier.getTotalNodes());
+		System.out.println("Max number of nodes in frontier: " + AStarFrontier.getMaxStored());
+		AStarFrontier.resetCounts();
+		System.out.println();
+
+
+		System.out.println("A* graph search:");
+		System.out.println();
+		Node solution7 = AStarGraphSearch.solve(initialConfiguration, goalTest);
+		new NPuzzlePrinting().printSolution(solution7);
+		System.out.println("Number of nodes in search: " + AStarFrontier.getTotalNodes());
+		System.out.println("Max number of nodes in frontier: " + AStarFrontier.getMaxStored());
+		AStarFrontier.resetCounts();
 		System.out.println();
 
 	}

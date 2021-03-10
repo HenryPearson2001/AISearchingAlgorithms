@@ -9,7 +9,7 @@ public class TreeSearch implements Search {
     }
 
     public Node solve(State initialConfiguration, GoalTest goalTest) {
-        this.frontier.addNode(new Node(null, null, initialConfiguration, 0));
+        this.frontier.addNode(new Node(null, null, initialConfiguration, 0, 0));
         while (!this.frontier.isEmpty()) {
             Node nextNode = frontier.remove();
             if (goalTest.isGoal(nextNode.state)) {
@@ -19,7 +19,7 @@ public class TreeSearch implements Search {
             else {
                 for (Action action : nextNode.state.getApplicableActions()) {
 					State newState = nextNode.state.getActionResult(action);
-					this.frontier.addNode(new Node(nextNode, action, newState, nextNode.depth + 1));
+					this.frontier.addNode(new Node(nextNode, action, newState, nextNode.depth + 1, nextNode.pathCost + action.cost()));
 				}
             }
         }

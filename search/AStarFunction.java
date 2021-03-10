@@ -1,16 +1,16 @@
 package search;
 
-class AStarFunction implements NodeFunction {
+public class AStarFunction implements NodeFunction {
 
-    public final NodeFunction h;
+    public NodeFunction h;
 
     // constructor
-    public void AStarFunction(NodeFunction h) {
+    public AStarFunction(NodeFunction h) {
         this.h = h;
     }
 
     public int function(Node node) {
-        return (h(node) + node.pathCost)
+        return (h.function(node) + node.pathCost);
     }
 
 }
